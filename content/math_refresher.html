@@ -1,0 +1,1153 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lineare Algebra &#8212; NLP Introduction</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/math_refresher';</script>
+    <link rel="canonical" href="/nlp-intro/content/math_refresher.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="NLP-Auffrischung" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="NLP Introduction - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="NLP Introduction - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    NLP-Auffrischung
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lineare Algebra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nguyenhongquy/nlp-intro" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nguyenhongquy/nlp-intro/issues/new?title=Issue%20on%20page%20%2Fcontent/math_refresher.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/math_refresher.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lineare Algebra</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allgemeine-notationen">1. Allgemeine Notationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor">1.1. Vektor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix">1.2. Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-gesagt">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einheitsmatrix">1.3. Einheitsmatrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalmatrix">1.4. Diagonalmatrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixoperationen">2. Matrixoperationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-vektor-multiplikation">2.1. Vektor-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📌 Kurz gesagt:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungen">🧠 Typische Anwendungen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">📌 Kurz zusammengefasst:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🟨 Interpretation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alltagsbild">🧸 Alltagsbild</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">📌 Merksatz:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#personen">🎭 Personen:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#filme">🎬 Filme:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#schritt-auszeres-produkt-berechnen">🔹 Schritt: Äußeres Produkt berechnen</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-liest-man-das">🟨 Wie liest man das?</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-matrix">🧾 Ergebnis-Matrix:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bedeutung">✅ Bedeutung:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">📌 Fazit:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lineare-algebra">
+<h1>Lineare Algebra<a class="headerlink" href="#lineare-algebra" title="Link to this heading">#</a></h1>
+<section id="allgemeine-notationen">
+<h2>1. Allgemeine Notationen<a class="headerlink" href="#allgemeine-notationen" title="Link to this heading">#</a></h2>
+<section id="vektor">
+<h3>1.1. Vektor<a class="headerlink" href="#vektor" title="Link to this heading">#</a></h3>
+<p>Wir bezeichnen mit <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span> einen Vektor mit <span class="math notranslate nohighlight">\(n\)</span> Einträgen, wobei <span class="math notranslate nohighlight">\(x_i \in \mathbb{R}\)</span> der <span class="math notranslate nohighlight">\(i\)</span>-te Eintrag ist:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \in \mathbb{R}^n
+\end{split}\]</div>
+<section id="erklarung">
+<h4>Erklärung<a class="headerlink" href="#erklarung" title="Link to this heading">#</a></h4>
+<p>Man stellt sich einen <strong>Vektor</strong> wie eine geordnete Liste von Zahlen vor, zum Beispiel wie eine Einkaufsliste, in der jede Zeile etwas anderes bedeutet.</p>
+<ul class="simple">
+<li><p>Der Ausdruck „<span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span>“ bedeutet: Wir haben eine Liste mit <strong>n Zahlen</strong>.</p></li>
+<li><p>Jede dieser Zahlen heißt „Eintrag“ des Vektors.</p></li>
+<li><p>„<span class="math notranslate nohighlight">\(x_i \in \mathbb{R}\)</span>“ heißt: Der <span class="math notranslate nohighlight">\(i\)</span>-te Eintrag in der Liste ist einfach eine <strong>reelle Zahl</strong>, also eine Zahl mit oder ohne Nachkommastellen (z. B. 3, -1.5, 0).</p></li>
+</ul>
+<p>Die Schreibweise:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+\end{split}\]</div>
+<p>zeigt, dass die Zahlen <strong>untereinander</strong> geschrieben sind, wie eine Spalte.</p>
+</section>
+<section id="beispiel">
+<h4>Beispiel<a class="headerlink" href="#beispiel" title="Link to this heading">#</a></h4>
+<p>Stell dir vor, du gehst einkaufen und willst drei Dinge kaufen: Äpfel, Bananen und Milch. Du schreibst auf:</p>
+<ul class="simple">
+<li><p>4 Äpfel</p></li>
+<li><p>6 Bananen</p></li>
+<li><p>1 Liter Milch</p></li>
+</ul>
+<p>Das ist wie ein Vektor mit 3 Einträgen:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x = \begin{pmatrix} 4 \\ 6 \\ 1 \end{pmatrix}
+\end{split}\]</div>
+<p>Hier ist:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1 = 4\)</span> (Äpfel),</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2 = 6\)</span> (Bananen),</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_3 = 1\)</span> (Milch).</p></li>
+</ul>
+<p>Du hast also einen Vektor in drei Dimensionen – oder kurz gesagt: <strong>eine Liste mit 3 Zahlen</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="matrix">
+<h3>1.2. Matrix<a class="headerlink" href="#matrix" title="Link to this heading">#</a></h3>
+<p>Wir bezeichnen mit <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> eine <strong>Matrix</strong> mit <span class="math notranslate nohighlight">\(m\)</span> Zeilen und <span class="math notranslate nohighlight">\(n\)</span> Spalten, wobei <span class="math notranslate nohighlight">\(A_{i,j} \in \mathbb{R}\)</span> der Eintrag in der <span class="math notranslate nohighlight">\(i\)</span>-ten Zeile und <span class="math notranslate nohighlight">\(j\)</span>-ten Spalte ist:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix}
+A_{1,1} &amp; \dots &amp; A_{1,n} \\
+\vdots &amp; &amp; \vdots \\
+A_{m,1} &amp; \dots &amp; A_{m,n}
+\end{pmatrix}
+\in \mathbb{R}^{m \times n}
+\end{split}\]</div>
+<section id="id1">
+<h4>Erklärung<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Eine <strong>Matrix</strong> ist wie eine Tabelle oder ein Rechteck aus Zahlen. Stell dir vor, du hast eine Tabelle mit mehreren <strong>Zeilen</strong> (von oben nach unten) und mehreren <strong>Spalten</strong> (von links nach rechts).</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m\)</span> = Anzahl der Zeilen (horizontal – wie bei einer Liste von Personen)</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = Anzahl der Spalten (vertikal – wie verschiedene Eigenschaften: z. B. Alter, Größe, Gewicht)</p></li>
+</ul>
+<p>Jeder <strong>Eintrag</strong> in der Tabelle wird mit zwei Zahlen benannt:</p>
+<ul class="simple">
+<li><p>Die erste Zahl sagt, <strong>in welcher Zeile</strong> der Eintrag steht.</p></li>
+<li><p>Die zweite Zahl sagt, <strong>in welcher Spalte</strong> er steht.</p></li>
+</ul>
+<p>Beispiel:
+Der Eintrag ganz oben links heißt <span class="math notranslate nohighlight">\(A_{1,1}\)</span>.
+Der Eintrag ganz unten rechts heißt <span class="math notranslate nohighlight">\(A_{m,n}\)</span>.</p>
+</section>
+<section id="id2">
+<h4>Beispiel<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Stell dir eine Tabelle für drei Schüler vor, in der du ihre Mathe- und Deutschnoten einträgst:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Mathe</p></th>
+<th class="head"><p>Deutsch</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Schüler 1</strong></p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Schüler 2</strong></p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Schüler 3</strong></p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Das ist eine Matrix mit 3 Zeilen (Schüler) und 2 Spalten (Fächer).
+So sieht sie als Matrix geschrieben aus:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix}
+2 &amp; 3 \\
+1 &amp; 2 \\
+4 &amp; 1
+\end{pmatrix}
+\end{split}\]</div>
+<p>Eintrag in <strong>2. Zeile und 1. Spalte</strong> ist <span class="math notranslate nohighlight">\(A_{2,1} = 1\)</span> → Das ist die Mathenote von Schüler 2.</p>
+</section>
+<section id="kurz-gesagt">
+<h4>📌 Kurz gesagt:<a class="headerlink" href="#kurz-gesagt" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>Eine Matrix ist eine Art <strong>Zahlen-Tabelle</strong>, mit der man in der Mathematik arbeitet – sie hat Zeilen und Spalten, und jeder Eintrag hat einen festen Platz.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="einheitsmatrix">
+<h3>1.3. Einheitsmatrix<a class="headerlink" href="#einheitsmatrix" title="Link to this heading">#</a></h3>
+<p>Die <strong>Einheitsmatrix</strong> <span class="math notranslate nohighlight">\(I \in \mathbb{R}^{m \times n}\)</span> ist eine <strong>quadratische Matrix</strong>, bei der alle Einträge auf der <strong>Diagonale</strong> Eins sind und <strong>alle anderen Null</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I = \begin{pmatrix}
+1 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; \ddots &amp; \ddots &amp; \vdots \\
+\vdots &amp; \ddots &amp; \ddots &amp; 0 \\
+0 &amp; \dots &amp; 0 &amp; 1
+\end{pmatrix}
+\end{split}\]</div>
+<p><strong>Bemerkung:</strong> Für alle Matrizen <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> gilt:
+<span class="math notranslate nohighlight">\(A \times I = I \times A = A\)</span></p>
+<section id="id3">
+<h4>Erklärung<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Die <strong>Einheitsmatrix</strong> ist wie eine besondere Tabelle mit Zahlen, bei der:</p>
+<ul class="simple">
+<li><p><strong>Nur auf der schrägen Linie von oben links nach unten rechts</strong> stehen lauter Einsen.</p></li>
+<li><p>Alle anderen Felder in der Tabelle sind Null.</p></li>
+<li><p>Sie ist <strong>quadratisch</strong>, also hat <strong>gleich viele Zeilen wie Spalten</strong> (z. B. 2×2 oder 3×3).</p></li>
+</ul>
+<p>Warum ist sie besonders?
+Wenn du mit einer normalen Matrix rechnest und sie mit der Einheitsmatrix <strong>multiplizierst</strong>, <strong>ändert sich nichts</strong>!
+Die Matrix bleibt gleich – wie beim Rechnen mit der Zahl 1:
+→ Wenn du 7 × 1 rechnest, bleibt 7.</p>
+</section>
+<section id="id4">
+<h4>Beispiel<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>Stell dir vor, du hast eine Einheitsmatrix der Größe 3×3:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}
+\end{split}\]</div>
+<p>Diese Matrix sagt sozusagen: <strong>„Ich verändere nichts.“</strong></p>
+<p>Wenn du eine andere Matrix hast, z. B.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix}
+5 &amp; 2 &amp; 7 \\
+1 &amp; 3 &amp; 0 \\
+4 &amp; 6 &amp; 8
+\end{pmatrix}
+\end{split}\]</div>
+<p>dann ist:</p>
+<div class="math notranslate nohighlight">
+\[
+A \times I = A \quad \text{und} \quad I \times A = A
+\]</div>
+</section>
+<section id="id5">
+<h4>📌 Kurz gesagt:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>Die Einheitsmatrix ist wie die Zahl „1“ für Matrizen: Wenn man mit ihr multipliziert, <strong>bleibt alles gleich</strong>.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="diagonalmatrix">
+<h3>1.4. Diagonalmatrix<a class="headerlink" href="#diagonalmatrix" title="Link to this heading">#</a></h3>
+<p>Eine <strong>Diagonalmatrix</strong> <span class="math notranslate nohighlight">\(D \in \mathbb{R}^{m \times n}\)</span> ist eine <strong>quadratische Matrix</strong>, bei der <strong>nur die Diagonale</strong> (von oben links nach unten rechts) <strong>nicht null ist</strong> – alle anderen Einträge sind <strong>null</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{pmatrix}
+d_1 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; \ddots &amp; \ddots &amp; \vdots \\
+\vdots &amp; \ddots &amp; \ddots &amp; 0 \\
+0 &amp; \dots &amp; 0 &amp; d_n
+\end{pmatrix}
+\end{split}\]</div>
+<p>Man schreibt auch einfach:</p>
+<div class="math notranslate nohighlight">
+\[
+D = \text{diag}(d_1, \dots, d_n)
+\]</div>
+<section id="id6">
+<h4>Erklärung<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>Eine <strong>Diagonalmatrix</strong> ist wie eine Tabelle, bei der nur die Zahlen auf der <strong>schrägen Linie von links oben nach rechts unten</strong> einen Wert haben – alle anderen Felder sind <strong>Null</strong>.</p>
+<p>Anders als bei der Einheitsmatrix müssen die Zahlen <strong>auf der Diagonale nicht Eins sein</strong> – sie können <strong>beliebige Zahlen</strong> sein, z. B. 3, -2 oder 0.5.</p>
+</section>
+<section id="id7">
+<h4>Beispiel<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>Stell dir eine Diagonalmatrix mit 3 Zeilen und 3 Spalten vor:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{pmatrix}
+2 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 5
+\end{pmatrix}
+\end{split}\]</div>
+<p>Oder kürzer geschrieben:</p>
+<div class="math notranslate nohighlight">
+\[
+D = \text{diag}(2, -1, 5)
+\]</div>
+<p>Das heißt:</p>
+<ul class="simple">
+<li><p>In der <strong>1. Zeile, 1. Spalte</strong> steht 2</p></li>
+<li><p>In der <strong>2. Zeile, 2. Spalte</strong> steht -1</p></li>
+<li><p>In der <strong>3. Zeile, 3. Spalte</strong> steht 5</p></li>
+<li><p>Alle anderen Stellen sind <strong>0</strong></p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>📌 Kurz gesagt:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>Eine Diagonalmatrix ist eine Tabelle, bei der <strong>nur die Diagonale zählt</strong>.
+Sie ist wie eine Einheitsmatrix – aber statt Einsen stehen dort <strong>beliebige Zahlen</strong>.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="matrixoperationen">
+<h2>2. Matrixoperationen<a class="headerlink" href="#matrixoperationen" title="Link to this heading">#</a></h2>
+<section id="vektor-vektor-multiplikation">
+<h3>2.1. Vektor-Vektor-Multiplikation<a class="headerlink" href="#vektor-vektor-multiplikation" title="Link to this heading">#</a></h3>
+<p>Es gibt zwei Arten von Produkten zwischen zwei Vektoren:</p>
+<p><strong>• Skalarprodukt (inneres Produkt):</strong></p>
+<p>Für <span class="math notranslate nohighlight">\(x, y \in \mathbb{R}^n\)</span> gilt:</p>
+<div class="math notranslate nohighlight">
+\[
+x^T y = \sum_{i=1}^n x_i y_i \in \mathbb{R}
+\]</div>
+<p><strong>• äußeres Produkt (outer product):</strong></p>
+<p>Für <span class="math notranslate nohighlight">\(x \in \mathbb{R}^m\)</span>, <span class="math notranslate nohighlight">\(y \in \mathbb{R}^n\)</span> gilt:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+xy^T = \begin{pmatrix}
+x_1 y_1 &amp; \dots &amp; x_1 y_n \\
+\vdots &amp; &amp; \vdots \\
+x_m y_1 &amp; \dots &amp; x_m y_n
+\end{pmatrix}
+\in \mathbb{R}^{m \times n}
+\end{split}\]</div>
+<section id="id9">
+<h4>Erklärung<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>Wenn man zwei Vektoren miteinander <strong>multipliziert</strong>, kann man das auf zwei verschiedene Arten tun:</p>
+<p>🔹 Inneres Produkt (Skalarprodukt)</p>
+<p>Das ist wie das <strong>Zusammenzählen der passenden Paare</strong> aus zwei Listen.</p>
+<ul class="simple">
+<li><p>Du nimmst den <strong>ersten Wert von x</strong> und <strong>ersten Wert von y</strong>, multiplizierst sie.</p></li>
+<li><p>Dann machst du das mit dem zweiten Paar, dritten Paar usw.</p></li>
+<li><p>Am Ende <strong>addierst</strong> du alle diese Produkte zusammen.</p></li>
+</ul>
+<p>Das Ergebnis ist <strong>eine einzelne Zahl</strong> (ein Skalar).</p>
+<p><strong>Beispiel:</strong>
+x = [2, 3], y = [4, 5]
+→ Inneres Produkt: <span class="math notranslate nohighlight">\(2×4 + 3×5 = 8 + 15 = 23\)</span></p>
+<p>🔹 Äußeres Produkt</p>
+<p>Hier baust du aus zwei Vektoren eine <strong>ganze Tabelle</strong> (Matrix).</p>
+<ul class="simple">
+<li><p>Du nimmst <strong>jede Zahl aus x</strong> und <strong>multiplizierst sie mit jeder Zahl aus y</strong>.</p></li>
+<li><p>Daraus entsteht eine Tabelle mit <span class="math notranslate nohighlight">\(m\)</span> Zeilen (aus x) und <span class="math notranslate nohighlight">\(n\)</span> Spalten (aus y).</p></li>
+</ul>
+<p><strong>Beispiel:</strong>
+x = [2, 3] (2 Werte → 2 Zeilen), y = [4, 5, 6] (3 Werte → 3 Spalten)</p>
+<p>→ Äußeres Produkt:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+xy^T = \begin{pmatrix}
+2×4 &amp; 2×5 &amp; 2×6 \\
+3×4 &amp; 3×5 &amp; 3×6
+\end{pmatrix}
+=
+\begin{pmatrix}
+8 &amp; 10 &amp; 12 \\
+12 &amp; 15 &amp; 18
+\end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="id10">
+<h4>📌 Kurz gesagt:<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Art</p></th>
+<th class="head"><p>Ergebnis</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Inneres Produkt</p></td>
+<td><p>Eine einzelne Zahl</p></td>
+<td><p>Multipliziere passende Werte &amp; summiere</p></td>
+</tr>
+<tr class="row-odd"><td><p>Äußeres Produkt</p></td>
+<td><p>Eine Matrix</p></td>
+<td><p>Baue eine Tabelle aus allen Kombinationen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">
+<h4>🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?<a class="headerlink" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben" title="Link to this heading">#</a></h4>
+<p>🔹 <strong>Inneres Produkt (Skalarprodukt)</strong></p>
+<p><strong>📍 Wann man es verwendet:</strong>
+Wenn man wissen will, <strong>wie ähnlich oder „ausgerichtet“</strong> zwei Dinge sind.</p>
+<p>🧠 Typische Anwendungen:</p>
+<ol class="arabic simple">
+<li><p><strong>Ähnlichkeit zwischen zwei Objekten</strong>
+– In der <strong>Suche oder Empfehlungssystemen</strong>:
+Zwei Vektoren (z. B. ein Nutzerprofil und ein Produktprofil) → Inneres Produkt misst, <strong>wie gut sie zusammenpassen</strong>.</p></li>
+<li><p><strong>Physik: Arbeit = Kraft × Weg</strong>
+– Wenn eine Kraft in eine bestimmte Richtung wirkt und sich ein Objekt in dieselbe Richtung bewegt.
+Das innere Produkt gibt an, <strong>wie viel Arbeit wirklich geleistet wurde</strong>.</p></li>
+<li><p><strong>Maschinelles Lernen</strong>
+– In linearen Modellen (z. B. bei der Vorhersage):
+Das Ergebnis eines Modells ist oft ein <strong>inneres Produkt zwischen den Gewichten und den Eingabewerten</strong>.</p></li>
+</ol>
+<p>🔹 <strong>Äußeres Produkt</strong></p>
+<p><strong>📍 Wann man es verwendet:</strong>
+Wenn man aus zwei Dingen <strong>eine Beziehungsmatrix oder Struktur</strong> aufbauen will.</p>
+</section>
+</section>
+<section id="typische-anwendungen">
+<h3>🧠 Typische Anwendungen:<a class="headerlink" href="#typische-anwendungen" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Korrelation von Datenstrukturen</strong>
+– Wenn du zwei Datenvektoren hast und wissen willst, <strong>wie sie sich gegenseitig beeinflussen</strong> – z. B. bei Covarianzmatrizen.</p></li>
+<li><p><strong>Bildverarbeitung oder neuronale Netze</strong>
+– Wenn man <strong>Beziehungen zwischen Merkmalen</strong> lernen will.</p></li>
+<li><p><strong>Erzeugung von Matrizen aus Basisvektoren</strong>
+– In der <strong>Linearen Algebra</strong>, wenn man Matrizen aus einfachen Richtungsvektoren zusammenbauen will.</p></li>
+</ol>
+</section>
+<section id="kurz-zusammengefasst">
+<h3>📌 Kurz zusammengefasst:<a class="headerlink" href="#kurz-zusammengefasst" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Produktart</p></th>
+<th class="head"><p>Typisches Ergebnis</p></th>
+<th class="head"><p>Was es bedeutet</p></th>
+<th class="head"><p>Anwendung im echten Leben</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Inneres Produkt</p></td>
+<td><p>Zahl</p></td>
+<td><p>„Wie gut passen zwei Dinge zusammen?“</p></td>
+<td><p>Empfehlungen, Vorhersagen, Arbeit in Physik</p></td>
+</tr>
+<tr class="row-odd"><td><p>Äußeres Produkt</p></td>
+<td><p>Matrix</p></td>
+<td><p>„Wie hängen alle Kombinationen zusammen?“</p></td>
+<td><p>Beziehungen, Datenstruktur, neuronale Netze</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">
+<h4>🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell<a class="headerlink" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell" title="Link to this heading">#</a></h4>
+<p>Wir wollen entscheiden, ob eine Person ein Produkt kaufen wird, basierend auf diesen <strong>Merkmalen</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Merkmal</p></th>
+<th class="head"><p>Eingabewert <span class="math notranslate nohighlight">\(x_i\)</span></p></th>
+<th class="head"><p>Gewicht <span class="math notranslate nohighlight">\(w_i\)</span></p></th>
+<th class="head"><p>Beitrag <span class="math notranslate nohighlight">\(x_i \cdot w_i\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Anzahl Seitenbesuche</p></td>
+<td><p>4</p></td>
+<td><p>0.3</p></td>
+<td><p>1.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gekaufte ähnliche Produkte</p></td>
+<td><p>2</p></td>
+<td><p>0.8</p></td>
+<td><p>1.6</p></td>
+</tr>
+<tr class="row-even"><td><p>Verweildauer (in Minuten)</p></td>
+<td><p>10</p></td>
+<td><p>0.1</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gesamtergebnis (inneres Produkt)</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><strong>3.8</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="interpretation">
+<h4>🟨 Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Eingabewerte</strong>: Was wir über die Person wissen</p></li>
+<li><p><strong>Gewichte</strong>: Wie wichtig jedes dieser Merkmale ist</p></li>
+<li><p><strong>Beitrag</strong>: Das Produkt aus Wert × Gewicht (also das, was am Ende zählt)</p></li>
+</ul>
+<p>Der <strong>Score = 3.8</strong> ergibt sich aus:</p>
+<div class="math notranslate nohighlight">
+\[
+x^T w = 4 \cdot 0.3 + 2 \cdot 0.8 + 10 \cdot 0.1 = 1.2 + 1.6 + 1.0 = 3.8
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="alltagsbild">
+<h4>🧸 Alltagsbild<a class="headerlink" href="#alltagsbild" title="Link to this heading">#</a></h4>
+<p>Das ist wie eine <strong>Bewertung mit Punkten</strong>:</p>
+<ul class="simple">
+<li><p>Besuch = 0.3 Punkte pro Mal</p></li>
+<li><p>Kauf = 0.8 Punkte pro Produkt</p></li>
+<li><p>Verweildauer = 0.1 Punkte pro Minute</p></li>
+</ul>
+<p>Dann rechnest du einfach alle Punkte zusammen, um zu entscheiden, <strong>wie interessiert</strong> die Person ist.</p>
+</section>
+<hr class="docutils" />
+<section id="merksatz">
+<h4>📌 Merksatz:<a class="headerlink" href="#merksatz" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>Das <strong>innere Produkt</strong> ist eine elegante Art zu sagen:
+„<strong>Wie viele Punkte bekommt jemand insgesamt?</strong>“
+– durch das Multiplizieren der Eingaben mit ihrer Bedeutung (Gewicht).</p>
+</div></blockquote>
+</section>
+<section id="auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">
+<h4>🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen<a class="headerlink" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen" title="Link to this heading">#</a></h4>
+<section id="personen">
+<h5>🎭 Personen:<a class="headerlink" href="#personen" title="Link to this heading">#</a></h5>
+<p>Du hast <strong>2 Personen</strong> – nennen wir sie Anna und Ben.
+Jede Person hat eine <strong>„Vorliebe“ für Genres</strong> in Form eines Vektors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x = \begin{pmatrix} 0.9 \\ 0.4 \end{pmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1 = 0.9\)</span>: Anna liebt Action</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2 = 0.4\)</span>: Ben mag Action etwas, aber weniger</p></li>
+</ul>
+</section>
+<section id="filme">
+<h5>🎬 Filme:<a class="headerlink" href="#filme" title="Link to this heading">#</a></h5>
+<p>Du hast <strong>3 Filme</strong>, jeder mit einem <strong>Genre-Gewicht</strong> (wie „Wieviel Action ist drin“):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{pmatrix} 0.6 \\ 0.3 \\ 0.9 \end{pmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Film 1: 60 % Action</p></li>
+<li><p>Film 2: 30 % Action</p></li>
+<li><p>Film 3: 90 % Action</p></li>
+</ul>
+</section>
+<section id="schritt-auszeres-produkt-berechnen">
+<h5>🔹 Schritt: Äußeres Produkt berechnen<a class="headerlink" href="#schritt-auszeres-produkt-berechnen" title="Link to this heading">#</a></h5>
+<p>Du rechnest:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+xy^T = \begin{pmatrix}
+0.9 \times 0.6 &amp; 0.9 \times 0.3 &amp; 0.9 \times 0.9 \\
+0.4 \times 0.6 &amp; 0.4 \times 0.3 &amp; 0.4 \times 0.9
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.54 &amp; 0.27 &amp; 0.81 \\
+0.24 &amp; 0.12 &amp; 0.36
+\end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="wie-liest-man-das">
+<h5>🟨 Wie liest man das?<a class="headerlink" href="#wie-liest-man-das" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Die <strong>Zeilen</strong> stehen für Personen:
+Zeile 1 = Anna, Zeile 2 = Ben</p></li>
+<li><p>Die <strong>Spalten</strong> stehen für Filme:
+Spalte 1 = Film 1, Spalte 2 = Film 2, Spalte 3 = Film 3</p></li>
+</ul>
+</section>
+<section id="ergebnis-matrix">
+<h5>🧾 Ergebnis-Matrix:<a class="headerlink" href="#ergebnis-matrix" title="Link to this heading">#</a></h5>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Film 1</p></th>
+<th class="head"><p>Film 2</p></th>
+<th class="head"><p>Film 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Anna</strong></p></td>
+<td><p>0.54</p></td>
+<td><p>0.27</p></td>
+<td><p>0.81</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ben</strong></p></td>
+<td><p>0.24</p></td>
+<td><p>0.12</p></td>
+<td><p>0.36</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bedeutung">
+<h5>✅ Bedeutung:<a class="headerlink" href="#bedeutung" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Diese Werte zeigen eine Art <strong>„Interessenslevel“</strong> oder <strong>„Kompatibilität“</strong> zwischen Person und Film.</p></li>
+<li><p>Anna ist <strong>sehr interessiert</strong> an Film 3 (0.81), weniger an Film 2 (0.27).</p></li>
+<li><p>Ben interessiert sich <strong>mäßig</strong> für Film 1 (0.24) und <strong>kaum</strong> für Film 2 (0.12).</p></li>
+</ul>
+</section>
+<section id="fazit">
+<h5>📌 Fazit:<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h5>
+<blockquote>
+<div><p>Mit dem <strong>äußeren Produkt</strong> kannst du aus zwei Vektoren – einem für Personen und einem für Filme – eine <strong>Bewertungsmatrix</strong> erzeugen, die alle möglichen Kombinationen abbildet.
+Das ist nützlich in <strong>Empfehlungssystemen</strong>, z. B. bei Netflix oder Spotify.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">NLP-Auffrischung</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allgemeine-notationen">1. Allgemeine Notationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor">1.1. Vektor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix">1.2. Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-gesagt">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einheitsmatrix">1.3. Einheitsmatrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonalmatrix">1.4. Diagonalmatrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📌 Kurz gesagt:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixoperationen">2. Matrixoperationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-vektor-multiplikation">2.1. Vektor-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📌 Kurz gesagt:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungen">🧠 Typische Anwendungen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">📌 Kurz zusammengefasst:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🟨 Interpretation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alltagsbild">🧸 Alltagsbild</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">📌 Merksatz:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#personen">🎭 Personen:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#filme">🎬 Filme:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#schritt-auszeres-produkt-berechnen">🔹 Schritt: Äußeres Produkt berechnen</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-liest-man-das">🟨 Wie liest man das?</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-matrix">🧾 Ergebnis-Matrix:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bedeutung">✅ Bedeutung:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">📌 Fazit:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Quy Nguyen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
