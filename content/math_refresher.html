@@ -382,6 +382,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor">1.1. Vektor</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung">Erklärung</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-code">PyTorch Code</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix">1.2. Matrix</a><ul class="nav section-nav flex-column">
@@ -406,29 +407,36 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixoperationen">2. Matrixoperationen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-vektor-multiplikation">2.1. Vektor-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Erklärung</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📌 Kurz gesagt:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">2.1.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.2. Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendung-im-echten-leben">2.1.3 Anwendung im echten Leben</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-skalarprodukt"><strong>Inneres Produkt (Skalarprodukt)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt"><strong>Äußeres Produkt</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungen">🧠 Typische Anwendungen:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">📌 Kurz zusammengefasst:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🟨 Interpretation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alltagsbild">🧸 Alltagsbild</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">📌 Merksatz:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#personen">🎭 Personen:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#filme">🎬 Filme:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#schritt-auszeres-produkt-berechnen">🔹 Schritt: Äußeres Produkt berechnen</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-liest-man-das">🟨 Wie liest man das?</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-matrix">🧾 Ergebnis-Matrix:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bedeutung">✅ Bedeutung:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">📌 Fazit:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.4. Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-vorhersage-mit-einem-linearen-modell">Inneres Produkt : Vorhersage mit einem linearen Modell</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-bewertung-von-filmen-durch-personen">Äußeres Produkt: Bewertung von Filmen durch Personen</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">2.1.5. Kurz zusammengefasst:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubersetzung-ins-deutsche">🟦 Übersetzung ins Deutsche</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vektor-multiplikation">2.2. Matrix-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.1. Definition</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung-in-einfachem-deutsch-ohne-mathematische-symbole">🟨 Erklärung in einfachem Deutsch (ohne mathematische Symbole)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-mit-tabelle-konkret">🧸 Beispiel mit Tabelle (konkret)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rechnen">📏 Rechnen:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-neuer-vektor">🟩 Ergebnis (neuer Vektor):</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-bedeutet-das">📌 Was bedeutet das?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">🧠 Merksatz:</a></li>
 </ul>
 </li>
 </ul>
@@ -489,8 +497,91 @@ x = \begin{pmatrix} 4 \\ 6 \\ 1 \end{pmatrix}
 </ul>
 <p>Du hast also einen Vektor in drei Dimensionen – oder kurz gesagt: <strong>eine Liste mit 3 Zahlen</strong>.</p>
 </section>
-</section>
 <hr class="docutils" />
+<section id="pytorch-code">
+<h4>PyTorch Code<a class="headerlink" href="#pytorch-code" title="Link to this heading">#</a></h4>
+<p>Hier zeigen wir, wie man so einen Vektor in PyTorch darstellt und verwendet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir importieren die PyTorch-Bibliothek, um mit Tensoren (also Vektoren) zu arbeiten</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span> 
+
+<span class="c1"># Ein Vektor mit 3 Einträgen </span>
+<span class="c1"># Das sind x-, y- und z-Koordinaten im Raum</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vektor x:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Zugriff auf den zweiten Eintrag (Index 1, da bei 0 beginnend)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zweiter Eintrag:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Wir importieren die PyTorch-Bibliothek, um mit Tensoren (also Vektoren) zu arbeiten</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Ein Vektor mit 3 Einträgen </span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Das sind x-, y- und z-Koordinaten im Raum</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie aussieht so ein Vektor im Raum?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir importieren matplotlib für das Zeichnen und insbesondere das 3D-Plot-Modul</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span> 
+
+<span class="c1"># Wir erstellen ein neues Fenster für den Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="c1"># Wir fügen dem Plot eine 3D-Achse hinzu</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+
+<span class="c1"># Wir zeichnen den Vektor als Pfeil (quiver), der bei (0,0,0) startet</span>
+<span class="c1"># und in Richtung (x[0], x[1], x[2]) zeigt</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span>
+    <span class="o">*</span><span class="n">origin</span><span class="p">,</span>        <span class="c1"># Startpunkt des Pfeils (Ursprung)</span>
+    <span class="o">*</span><span class="n">x</span><span class="p">,</span>             <span class="c1"># Zielrichtung des Pfeils (Vektorkomponenten)</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>   <span class="c1"># Farbe des Pfeils</span>
+    <span class="n">arrow_length_ratio</span><span class="o">=</span><span class="mf">0.1</span>  <span class="c1"># Verhältnis der Pfeilspitze zur Länge</span>
+    <span class="p">)</span>
+
+<span class="c1"># Achesenbeschriftungen und Bereich</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Wir beschriften die Achsen mit Klartext</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-Achse&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-Achse&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z-Achse&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wir geben dem Plot einen Titel</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;3D-Vektorvisualisierung&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wir passen das Layout an, damit nichts abgeschnitten wird</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Wir zeigen den Plot an</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/63af559a9a35874ff5db69adfb5e28faeabca2e49f703b8695e2b6405d38661e.png" src="../_images/63af559a9a35874ff5db69adfb5e28faeabca2e49f703b8695e2b6405d38661e.png" />
+</div>
+</div>
+</section>
+</section>
 <section id="matrix">
 <h3>1.2. Matrix<a class="headerlink" href="#matrix" title="Link to this heading">#</a></h3>
 <p>Wir bezeichnen mit <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> eine <strong>Matrix</strong> mit <span class="math notranslate nohighlight">\(m\)</span> Zeilen und <span class="math notranslate nohighlight">\(n\)</span> Spalten, wobei <span class="math notranslate nohighlight">\(A_{i,j} \in \mathbb{R}\)</span> der Eintrag in der <span class="math notranslate nohighlight">\(i\)</span>-ten Zeile und <span class="math notranslate nohighlight">\(j\)</span>-ten Spalte ist:</p>
@@ -687,6 +778,8 @@ Sie ist wie eine Einheitsmatrix – aber statt Einsen stehen dort <strong>belieb
 <h2>2. Matrixoperationen<a class="headerlink" href="#matrixoperationen" title="Link to this heading">#</a></h2>
 <section id="vektor-vektor-multiplikation">
 <h3>2.1. Vektor-Vektor-Multiplikation<a class="headerlink" href="#vektor-vektor-multiplikation" title="Link to this heading">#</a></h3>
+<section id="definition">
+<h4>2.1.1. Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
 <p>Es gibt zwei Arten von Produkten zwischen zwei Vektoren:</p>
 <p><strong>• Skalarprodukt (inneres Produkt):</strong></p>
 <p>Für <span class="math notranslate nohighlight">\(x, y \in \mathbb{R}^n\)</span> gilt:</p>
@@ -705,8 +798,10 @@ x_m y_1 &amp; \dots &amp; x_m y_n
 \end{pmatrix}
 \in \mathbb{R}^{m \times n}
 \end{split}\]</div>
+</section>
+<hr class="docutils" />
 <section id="id9">
-<h4>Erklärung<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<h4>2.1.2. Erklärung<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
 <p>Wenn man zwei Vektoren miteinander <strong>multipliziert</strong>, kann man das auf zwei verschiedene Arten tun:</p>
 <p>🔹 Inneres Produkt (Skalarprodukt)</p>
 <p>Das ist wie das <strong>Zusammenzählen der passenden Paare</strong> aus zwei Listen.</p>
@@ -741,31 +836,11 @@ xy^T = \begin{pmatrix}
 \end{pmatrix}
 \end{split}\]</div>
 </section>
-<section id="id10">
-<h4>📌 Kurz gesagt:<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Art</p></th>
-<th class="head"><p>Ergebnis</p></th>
-<th class="head"><p>Beschreibung</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Inneres Produkt</p></td>
-<td><p>Eine einzelne Zahl</p></td>
-<td><p>Multipliziere passende Werte &amp; summiere</p></td>
-</tr>
-<tr class="row-odd"><td><p>Äußeres Produkt</p></td>
-<td><p>Eine Matrix</p></td>
-<td><p>Baue eine Tabelle aus allen Kombinationen</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">
-<h4>🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?<a class="headerlink" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben" title="Link to this heading">#</a></h4>
-<p>🔹 <strong>Inneres Produkt (Skalarprodukt)</strong></p>
+<hr class="docutils" />
+<section id="anwendung-im-echten-leben">
+<h4>2.1.3 Anwendung im echten Leben<a class="headerlink" href="#anwendung-im-echten-leben" title="Link to this heading">#</a></h4>
+<section id="inneres-produkt-skalarprodukt">
+<h5><strong>Inneres Produkt (Skalarprodukt)</strong><a class="headerlink" href="#inneres-produkt-skalarprodukt" title="Link to this heading">#</a></h5>
 <p><strong>📍 Wann man es verwendet:</strong>
 Wenn man wissen will, <strong>wie ähnlich oder „ausgerichtet“</strong> zwei Dinge sind.</p>
 <p>🧠 Typische Anwendungen:</p>
@@ -780,13 +855,12 @@ Das innere Produkt gibt an, <strong>wie viel Arbeit wirklich geleistet wurde</st
 – In linearen Modellen (z. B. bei der Vorhersage):
 Das Ergebnis eines Modells ist oft ein <strong>inneres Produkt zwischen den Gewichten und den Eingabewerten</strong>.</p></li>
 </ol>
-<p>🔹 <strong>Äußeres Produkt</strong></p>
+</section>
+<section id="auszeres-produkt">
+<h5><strong>Äußeres Produkt</strong><a class="headerlink" href="#auszeres-produkt" title="Link to this heading">#</a></h5>
 <p><strong>📍 Wann man es verwendet:</strong>
 Wenn man aus zwei Dingen <strong>eine Beziehungsmatrix oder Struktur</strong> aufbauen will.</p>
-</section>
-</section>
-<section id="typische-anwendungen">
-<h3>🧠 Typische Anwendungen:<a class="headerlink" href="#typische-anwendungen" title="Link to this heading">#</a></h3>
+<p>🧠 Typische Anwendungen:</p>
 <ol class="arabic simple">
 <li><p><strong>Korrelation von Datenstrukturen</strong>
 – Wenn du zwei Datenvektoren hast und wissen willst, <strong>wie sie sich gegenseitig beeinflussen</strong> – z. B. bei Covarianzmatrizen.</p></li>
@@ -796,33 +870,12 @@ Wenn man aus zwei Dingen <strong>eine Beziehungsmatrix oder Struktur</strong> au
 – In der <strong>Linearen Algebra</strong>, wenn man Matrizen aus einfachen Richtungsvektoren zusammenbauen will.</p></li>
 </ol>
 </section>
-<section id="kurz-zusammengefasst">
-<h3>📌 Kurz zusammengefasst:<a class="headerlink" href="#kurz-zusammengefasst" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Produktart</p></th>
-<th class="head"><p>Typisches Ergebnis</p></th>
-<th class="head"><p>Was es bedeutet</p></th>
-<th class="head"><p>Anwendung im echten Leben</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Inneres Produkt</p></td>
-<td><p>Zahl</p></td>
-<td><p>„Wie gut passen zwei Dinge zusammen?“</p></td>
-<td><p>Empfehlungen, Vorhersagen, Arbeit in Physik</p></td>
-</tr>
-<tr class="row-odd"><td><p>Äußeres Produkt</p></td>
-<td><p>Matrix</p></td>
-<td><p>„Wie hängen alle Kombinationen zusammen?“</p></td>
-<td><p>Beziehungen, Datenstruktur, neuronale Netze</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+</section>
 <hr class="docutils" />
-<section id="inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">
-<h4>🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell<a class="headerlink" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell" title="Link to this heading">#</a></h4>
+<section id="id10">
+<h4>2.1.4. Beispiel<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<section id="inneres-produkt-vorhersage-mit-einem-linearen-modell">
+<h5>Inneres Produkt : Vorhersage mit einem linearen Modell<a class="headerlink" href="#inneres-produkt-vorhersage-mit-einem-linearen-modell" title="Link to this heading">#</a></h5>
 <p>Wir wollen entscheiden, ob eine Person ein Produkt kaufen wird, basierend auf diesen <strong>Merkmalen</strong>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -856,9 +909,7 @@ Wenn man aus zwei Dingen <strong>eine Beziehungsmatrix oder Struktur</strong> au
 </tbody>
 </table>
 </div>
-</section>
-<section id="interpretation">
-<h4>🟨 Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h4>
+<p>🟨 Interpretation</p>
 <ul class="simple">
 <li><p><strong>Eingabewerte</strong>: Was wir über die Person wissen</p></li>
 <li><p><strong>Gewichte</strong>: Wie wichtig jedes dieser Merkmale ist</p></li>
@@ -869,10 +920,7 @@ Wenn man aus zwei Dingen <strong>eine Beziehungsmatrix oder Struktur</strong> au
 \[
 x^T w = 4 \cdot 0.3 + 2 \cdot 0.8 + 10 \cdot 0.1 = 1.2 + 1.6 + 1.0 = 3.8
 \]</div>
-</section>
-<hr class="docutils" />
-<section id="alltagsbild">
-<h4>🧸 Alltagsbild<a class="headerlink" href="#alltagsbild" title="Link to this heading">#</a></h4>
+<p>🧸 Alltagsbild</p>
 <p>Das ist wie eine <strong>Bewertung mit Punkten</strong>:</p>
 <ul class="simple">
 <li><p>Besuch = 0.3 Punkte pro Mal</p></li>
@@ -880,20 +928,16 @@ x^T w = 4 \cdot 0.3 + 2 \cdot 0.8 + 10 \cdot 0.1 = 1.2 + 1.6 + 1.0 = 3.8
 <li><p>Verweildauer = 0.1 Punkte pro Minute</p></li>
 </ul>
 <p>Dann rechnest du einfach alle Punkte zusammen, um zu entscheiden, <strong>wie interessiert</strong> die Person ist.</p>
-</section>
-<hr class="docutils" />
-<section id="merksatz">
-<h4>📌 Merksatz:<a class="headerlink" href="#merksatz" title="Link to this heading">#</a></h4>
+<p>📌 Merksatz:</p>
 <blockquote>
 <div><p>Das <strong>innere Produkt</strong> ist eine elegante Art zu sagen:
 „<strong>Wie viele Punkte bekommt jemand insgesamt?</strong>“
 – durch das Multiplizieren der Eingaben mit ihrer Bedeutung (Gewicht).</p>
 </div></blockquote>
 </section>
-<section id="auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">
-<h4>🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen<a class="headerlink" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen" title="Link to this heading">#</a></h4>
-<section id="personen">
-<h5>🎭 Personen:<a class="headerlink" href="#personen" title="Link to this heading">#</a></h5>
+<section id="auszeres-produkt-bewertung-von-filmen-durch-personen">
+<h5>Äußeres Produkt: Bewertung von Filmen durch Personen<a class="headerlink" href="#auszeres-produkt-bewertung-von-filmen-durch-personen" title="Link to this heading">#</a></h5>
+<p>🎭 Personen:</p>
 <p>Du hast <strong>2 Personen</strong> – nennen wir sie Anna und Ben.
 Jede Person hat eine <strong>„Vorliebe“ für Genres</strong> in Form eines Vektors:</p>
 <div class="math notranslate nohighlight">
@@ -904,9 +948,7 @@ x = \begin{pmatrix} 0.9 \\ 0.4 \end{pmatrix}
 <li><p><span class="math notranslate nohighlight">\(x_1 = 0.9\)</span>: Anna liebt Action</p></li>
 <li><p><span class="math notranslate nohighlight">\(x_2 = 0.4\)</span>: Ben mag Action etwas, aber weniger</p></li>
 </ul>
-</section>
-<section id="filme">
-<h5>🎬 Filme:<a class="headerlink" href="#filme" title="Link to this heading">#</a></h5>
+<p>🎬 Filme:</p>
 <p>Du hast <strong>3 Filme</strong>, jeder mit einem <strong>Genre-Gewicht</strong> (wie „Wieviel Action ist drin“):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -917,9 +959,7 @@ y = \begin{pmatrix} 0.6 \\ 0.3 \\ 0.9 \end{pmatrix}
 <li><p>Film 2: 30 % Action</p></li>
 <li><p>Film 3: 90 % Action</p></li>
 </ul>
-</section>
-<section id="schritt-auszeres-produkt-berechnen">
-<h5>🔹 Schritt: Äußeres Produkt berechnen<a class="headerlink" href="#schritt-auszeres-produkt-berechnen" title="Link to this heading">#</a></h5>
+<p>🔹 Schritt: Äußeres Produkt berechnen</p>
 <p>Du rechnest:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -933,18 +973,14 @@ xy^T = \begin{pmatrix}
 0.24 &amp; 0.12 &amp; 0.36
 \end{pmatrix}
 \end{split}\]</div>
-</section>
-<section id="wie-liest-man-das">
-<h5>🟨 Wie liest man das?<a class="headerlink" href="#wie-liest-man-das" title="Link to this heading">#</a></h5>
+<p>🟨 Wie liest man das?</p>
 <ul class="simple">
 <li><p>Die <strong>Zeilen</strong> stehen für Personen:
 Zeile 1 = Anna, Zeile 2 = Ben</p></li>
 <li><p>Die <strong>Spalten</strong> stehen für Filme:
 Spalte 1 = Film 1, Spalte 2 = Film 2, Spalte 3 = Film 3</p></li>
 </ul>
-</section>
-<section id="ergebnis-matrix">
-<h5>🧾 Ergebnis-Matrix:<a class="headerlink" href="#ergebnis-matrix" title="Link to this heading">#</a></h5>
+<p>🧾 Ergebnis-Matrix:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
@@ -967,23 +1003,144 @@ Spalte 1 = Film 1, Spalte 2 = Film 2, Spalte 3 = Film 3</p></li>
 </tbody>
 </table>
 </div>
-</section>
-<section id="bedeutung">
-<h5>✅ Bedeutung:<a class="headerlink" href="#bedeutung" title="Link to this heading">#</a></h5>
+<p>✅ Bedeutung:</p>
 <ul class="simple">
 <li><p>Diese Werte zeigen eine Art <strong>„Interessenslevel“</strong> oder <strong>„Kompatibilität“</strong> zwischen Person und Film.</p></li>
 <li><p>Anna ist <strong>sehr interessiert</strong> an Film 3 (0.81), weniger an Film 2 (0.27).</p></li>
 <li><p>Ben interessiert sich <strong>mäßig</strong> für Film 1 (0.24) und <strong>kaum</strong> für Film 2 (0.12).</p></li>
 </ul>
-</section>
-<section id="fazit">
-<h5>📌 Fazit:<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h5>
+<p>📌 Fazit:</p>
 <blockquote>
 <div><p>Mit dem <strong>äußeren Produkt</strong> kannst du aus zwei Vektoren – einem für Personen und einem für Filme – eine <strong>Bewertungsmatrix</strong> erzeugen, die alle möglichen Kombinationen abbildet.
 Das ist nützlich in <strong>Empfehlungssystemen</strong>, z. B. bei Netflix oder Spotify.</p>
 </div></blockquote>
 </section>
 </section>
+<section id="kurz-zusammengefasst">
+<h4>2.1.5. Kurz zusammengefasst:<a class="headerlink" href="#kurz-zusammengefasst" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Produktart</p></th>
+<th class="head"><p>Typisches Ergebnis</p></th>
+<th class="head"><p>Was es bedeutet</p></th>
+<th class="head"><p>Anwendung im echten Leben</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Inneres Produkt</p></td>
+<td><p>Zahl</p></td>
+<td><p>„Wie gut passen zwei Dinge zusammen?“</p></td>
+<td><p>Empfehlungen, Vorhersagen, Arbeit in Physik</p></td>
+</tr>
+<tr class="row-odd"><td><p>Äußeres Produkt</p></td>
+<td><p>Matrix</p></td>
+<td><p>„Wie hängen alle Kombinationen zusammen?“</p></td>
+<td><p>Beziehungen, Datenstruktur, neuronale Netze</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ubersetzung-ins-deutsche">
+<h3>🟦 Übersetzung ins Deutsche<a class="headerlink" href="#ubersetzung-ins-deutsche" title="Link to this heading">#</a></h3>
+<section id="matrix-vektor-multiplikation">
+<h4>2.2. Matrix-Vektor-Multiplikation<a class="headerlink" href="#matrix-vektor-multiplikation" title="Link to this heading">#</a></h4>
+<section id="id11">
+<h5>2.2.1. Definition<a class="headerlink" href="#id11" title="Link to this heading">#</a></h5>
+<p>Das Produkt einer Matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> mit einem Vektor <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span> ergibt einen <strong>Vektor der Länge <span class="math notranslate nohighlight">\(m\)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Ax = \begin{pmatrix}
+a^T_{r,1}x \\
+\vdots \\
+a^T_{r,m}x
+\end{pmatrix}
+= \sum_{i=1}^n a_{c,i} x_i \in \mathbb{R}^m
+\end{split}\]</div>
+<p>Dabei ist:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a^T_{r,i}\)</span>: die <strong>i-te Zeile</strong> von A (als Vektor)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a^T_{c,j}\)</span>: die <strong>j-te Spalte</strong> von A (als Vektor)</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span>: der <strong>i-te Eintrag</strong> des Vektors <span class="math notranslate nohighlight">\(x\)</span></p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="erklarung-in-einfachem-deutsch-ohne-mathematische-symbole">
+<h3>🟨 Erklärung in einfachem Deutsch (ohne mathematische Symbole)<a class="headerlink" href="#erklarung-in-einfachem-deutsch-ohne-mathematische-symbole" title="Link to this heading">#</a></h3>
+<p>Wenn du eine <strong>Matrix mit einem Vektor multiplizierst</strong>, passiert Folgendes:</p>
+<ol class="arabic simple">
+<li><p><strong>Jede Zeile der Matrix</strong> wird mit dem Vektor <strong>einzeln verrechnet</strong>.</p></li>
+<li><p>Das heißt: Du berechnest für jede Zeile ein <strong>inneres Produkt</strong> (siehe oben).</p></li>
+<li><p>Am Ende bekommst du <strong>einen neuen Vektor</strong>, der so viele Einträge hat wie die Matrix <strong>Zeilen</strong>.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="beispiel-mit-tabelle-konkret">
+<h3>🧸 Beispiel mit Tabelle (konkret)<a class="headerlink" href="#beispiel-mit-tabelle-konkret" title="Link to this heading">#</a></h3>
+<p>Nehmen wir eine Matrix <span class="math notranslate nohighlight">\(A\)</span> mit <strong>2 Zeilen und 3 Spalten</strong> (also 2×3):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Merkmal 1</p></th>
+<th class="head"><p>Merkmal 2</p></th>
+<th class="head"><p>Merkmal 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Zeile 1</strong></p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Zeile 2</strong></p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Und einen Vektor <span class="math notranslate nohighlight">\(x\)</span> mit 3 Einträgen:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}
+\end{split}\]</div>
+<section id="rechnen">
+<h4>📏 Rechnen:<a class="headerlink" href="#rechnen" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Erste Zeile × Vektor:
+<span class="math notranslate nohighlight">\(1×1 + 2×0 + 3×2 = 1 + 0 + 6 = 7\)</span></p></li>
+<li><p>Zweite Zeile × Vektor:
+<span class="math notranslate nohighlight">\(4×1 + 5×0 + 6×2 = 4 + 0 + 12 = 16\)</span></p></li>
+</ul>
+</section>
+<section id="ergebnis-neuer-vektor">
+<h4>🟩 Ergebnis (neuer Vektor):<a class="headerlink" href="#ergebnis-neuer-vektor" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Ax = \begin{pmatrix} 7 \\ 16 \end{pmatrix}
+\end{split}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="was-bedeutet-das">
+<h3>📌 Was bedeutet das?<a class="headerlink" href="#was-bedeutet-das" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Die Matrix <span class="math notranslate nohighlight">\(A\)</span> enthält <strong>z. B. Informationen über zwei Produkte</strong>.</p></li>
+<li><p>Der Vektor <span class="math notranslate nohighlight">\(x\)</span> enthält <strong>z. B. deine Vorlieben</strong> für drei Eigenschaften (z. B. Preis, Design, Leistung).</p></li>
+<li><p>Das Produkt <span class="math notranslate nohighlight">\(Ax\)</span> ergibt einen neuen Vektor – <strong>eine Bewertung pro Produkt</strong>, basierend auf deinen Vorlieben.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="merksatz">
+<h3>🧠 Merksatz:<a class="headerlink" href="#merksatz" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Matrix-Vektor-Multiplikation = „<strong>mehrere gewichtete Punktesummen auf einmal rechnen</strong>“ – eine pro Zeile der Matrix.</p>
+</div></blockquote>
 </section>
 </section>
 </section>
@@ -1047,6 +1204,7 @@ Das ist nützlich in <strong>Empfehlungssystemen</strong>, z. B. bei Netflix o
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor">1.1. Vektor</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung">Erklärung</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-code">PyTorch Code</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix">1.2. Matrix</a><ul class="nav section-nav flex-column">
@@ -1071,29 +1229,36 @@ Das ist nützlich in <strong>Empfehlungssystemen</strong>, z. B. bei Netflix o
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixoperationen">2. Matrixoperationen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-vektor-multiplikation">2.1. Vektor-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Erklärung</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📌 Kurz gesagt:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wann-benutzt-man-das-innere-und-das-auszere-produkt-im-echten-leben">🟦 Wann benutzt man das innere und das äußere Produkt im echten Leben?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">2.1.1. Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.2. Erklärung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendung-im-echten-leben">2.1.3 Anwendung im echten Leben</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-skalarprodukt"><strong>Inneres Produkt (Skalarprodukt)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt"><strong>Äußeres Produkt</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungen">🧠 Typische Anwendungen:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">📌 Kurz zusammengefasst:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-beispiel-vorhersage-mit-einem-linearen-modell">🟦 Inneres Produkt Beispiel: Vorhersage mit einem linearen Modell</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🟨 Interpretation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alltagsbild">🧸 Alltagsbild</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">📌 Merksatz:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-beispiel-bewertung-von-filmen-durch-personen">🟦 Äußeres Produkt Beispiel: Bewertung von Filmen durch Personen</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#personen">🎭 Personen:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#filme">🎬 Filme:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#schritt-auszeres-produkt-berechnen">🔹 Schritt: Äußeres Produkt berechnen</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-liest-man-das">🟨 Wie liest man das?</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-matrix">🧾 Ergebnis-Matrix:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bedeutung">✅ Bedeutung:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">📌 Fazit:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.4. Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inneres-produkt-vorhersage-mit-einem-linearen-modell">Inneres Produkt : Vorhersage mit einem linearen Modell</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#auszeres-produkt-bewertung-von-filmen-durch-personen">Äußeres Produkt: Bewertung von Filmen durch Personen</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kurz-zusammengefasst">2.1.5. Kurz zusammengefasst:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubersetzung-ins-deutsche">🟦 Übersetzung ins Deutsche</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vektor-multiplikation">2.2. Matrix-Vektor-Multiplikation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.1. Definition</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erklarung-in-einfachem-deutsch-ohne-mathematische-symbole">🟨 Erklärung in einfachem Deutsch (ohne mathematische Symbole)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-mit-tabelle-konkret">🧸 Beispiel mit Tabelle (konkret)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rechnen">📏 Rechnen:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ergebnis-neuer-vektor">🟩 Ergebnis (neuer Vektor):</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-bedeutet-das">📌 Was bedeutet das?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merksatz">🧠 Merksatz:</a></li>
 </ul>
 </li>
 </ul>
