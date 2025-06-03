@@ -113,9 +113,9 @@ ax.quiver(
     )
 
 # Achesenbeschriftungen und Bereich
-ax.set_xlim([-5,5])
-ax.set_ylim([-5,5])
-ax.set_zlim([-5,5])
+ax.set_xlim([0,max(x)+1])
+ax.set_ylim([0,max(x)+1])
+ax.set_zlim([0,max(x)+1])
 
 # Wir beschriften die Achsen mit Klartext
 ax.set_xlabel('X-Achse')
