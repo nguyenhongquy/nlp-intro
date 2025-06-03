@@ -4,4 +4,4 @@
 format: jb-book
 root: README
 chapters:
-- file: content/math_refresher
+- file: content/math_refresher_myst
